@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 231 28% 14%; /* Neutral 900 */
+    
+    --card: 0 0% 100%;
+    --card-foreground: 231 28% 14%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 231 28% 14%;
+    
+    --primary: 356 80% 39%; /* #B3141E */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 0 0% 95%; /* Neutral 100 */
+    --secondary-foreground: 231 28% 14%;
+    
+    --muted: 0 0% 95%;
+    --muted-foreground: 0 0% 40%; /* Neutral 500 */
+    
+    --accent: 208 83% 35%; /* #0F5FA6 */
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 65% 51%; /* #D32F2F */
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 356 80% 39%;
+    
+    --radius: 0.75rem; /* 12px */
+  }
+
+  .dark {
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+    
+    --card: 240 10% 8%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 240 10% 8%;
+    --popover-foreground: 0 0% 98%;
+    
+    --primary: 356 80% 48%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 240 5% 15%;
+    --secondary-foreground: 0 0% 98%;
+    
+    --muted: 240 5% 15%;
+    --muted-foreground: 240 5% 65%;
+    
+    --accent: 208 83% 50%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 65% 51%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 240 5% 18%;
+    --input: 240 5% 18%;
+    --ring: 356 80% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-brand/20;
+  }
+}
+
+/* Glassmorphism utilities */
+.glass {
+  @apply bg-white/70 dark:bg-neutral-900/70 backdrop-blur-md border border-white/20 dark:border-white/10;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-500/30 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral-500/50;
+}
