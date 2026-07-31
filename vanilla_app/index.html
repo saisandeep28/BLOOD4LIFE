@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BLOOD4LIFE | Digital Blood Bank Ecosystem</title>
+  <meta name="description" content="Every Drop Counts. Every Life Matters. The intelligent digital blood bank ecosystem connecting donors, hospitals, and recipients in real-time." />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <div class="brand-heart">❤</div>
+        <span class="brand-title">BLOOD4LIFE</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#eligibility" class="nav-link">Who Can Donate</a>
+        <a href="#stats" class="nav-link">Statewide Presence</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <button id="theme-toggle-btn" class="btn btn-outline" style="padding: 0.5rem 0.75rem;">
+          <i data-lucide="moon" id="theme-icon"></i>
+        </button>
+        <a href="#register" class="btn btn-primary">Become a Donor</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 1. WHO CAN DONATE BLOOD? INTERACTIVE QUESTIONNAIRE -->
+    <section id="eligibility" class="section bg-white border-b">
+      <div class="container max-w-6xl">
+        
+        <!-- STEP 1: INTRO STATE -->
+        <div id="step-intro" class="grid grid-2 items-center">
+          <div class="space-y-6">
+            <h2 class="title-crimson">Who Can Donate Blood?</h2>
+            <p class="text-lead">
+              Donating blood is a simple, safe and life-saving act. But not everyone may be eligible to donate.
+            </p>
+            <p class="text-subtle">
+              Down below is a Questionnaire provided to assess the Health percentage based on general norms.
+            </p>
+
+            <div class="btn-group">
+              <button id="btn-start-check" class="btn btn-primary">Check Eligibility</button>
+            </div>
+
+            <p class="disclaimer">
+              The answers to these questions are for general guidance only. Please consult a doctor before donating blood.
+            </p>
+          </div>
+
+          <div class="graphic-container">
+            <div class="human-graphic" id="graphic-intro"></div>
+          </div>
+        </div>
+
+        <!-- STEP 2: CONFIRMATION PROMPT -->
+        <div id="step-confirm" class="grid grid-2 items-center hidden">
+          <div class="space-y-6">
+            <h2 class="title-crimson">Check Your Eligibility</h2>
+            <p class="text-lead">
+              Your donation changes lives. But not everyone can donate blood for a few reasons. Check your eligibility to donate today.
+            </p>
+
+            <div class="btn-group">
+              <button id="btn-confirm-yes" class="btn btn-primary">Yes</button>
+              <button id="btn-confirm-back" class="btn btn-outline">Back</button>
+            </div>
+
+            <p class="disclaimer">
+              The answers to these questions are for general guidance only. Please consult a doctor before donating blood.
+            </p>
+          </div>
+
+          <div class="graphic-container">
+            <div class="human-graphic" id="graphic-confirm"></div>
+          </div>
+        </div>
+
+        <!-- STEP 3: QUESTIONNAIRE (1 OF 9) -->
+        <div id="step-quiz" class="grid grid-2 items-center hidden">
+          <div class="space-y-6">
+            <div>
+              <h2 class="title-crimson">Check Your Eligibility</h2>
+              <span id="quiz-question-counter" class="badge-counter">Question 1 of 9</span>
+            </div>
+
+            <div class="space-y-3">
+              <h3 id="quiz-question-text" class="question-heading">
+                Are you currently taking any medication (e.g., antibiotics, blood thinners)?
+              </h3>
+              <p id="quiz-question-desc" class="text-subtle">
+                Certain medications, such as antibiotics or blood thinners, can affect the quality and safety of donated blood.
+              </p>
+            </div>
+
+            <div class="btn-group">
+              <button id="btn-quiz-yes" class="btn btn-primary min-w-btn">Yes</button>
+              <button id="btn-quiz-no" class="btn btn-outline min-w-btn">No</button>
+            </div>
+
+            <p class="disclaimer">
+              The answers to these questions are for general guidance only. Please consult a doctor before donating blood.
+            </p>
+          </div>
+
+          <!-- Graphic + Percentage Side-by-Side -->
+          <div class="graphic-container flex-row gap-8">
+            <div class="human-graphic" id="graphic-quiz"></div>
+
+            <div class="percentage-box">
+              <span id="health-percentage-num" class="percentage-value">0.0%</span>
+              <p class="percentage-label">Health Percentage</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 4: FINAL RESULTS -->
+        <div id="step-results" class="results-card hidden">
+          <h2 class="title-crimson text-center">Your donation analysis has been done.</h2>
+          
+          <div class="space-y-2 text-center">
+            <p class="text-lead">
+              According to our analysis your eligibility of donating blood is <span id="final-percentage-num" class="font-bold">0.0%</span>.
+            </p>
+            <p class="text-subtle">
+              A doctor will re-verify donor eligibility before actual blood donation.
+            </p>
+          </div>
+
+          <div class="text-center pt-4">
+            <button id="btn-quiz-restart" class="btn btn-primary">Start Over</button>
+          </div>
+
+          <p class="disclaimer text-left pt-8">
+            The answers to these questions are for general guidance only. Please consult a doctor before donating blood.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. STATEWIDE PRESENCE - ANDHRA PRADESH DASHBOARD -->
+    <section id="stats" class="section bg-white border-b">
+      <div class="container">
+        <div class="grid grid-2 items-center max-w-6xl mx-auto gap-12">
+          
+          <div class="space-y-8">
+            <div>
+              <h2 class="title-crimson">Statewide Presence.</h2>
+              <h2 class="title-crimson">Ensuring Accessibility Across A.P.</h2>
+              <p class="text-subtle font-medium mt-2">
+                A Connected Network of Blood Centers Serving Every District
+              </p>
+            </div>
+
+            <div class="grid grid-stats gap-4">
+              <div class="stat-card">
+                <div class="stat-header">
+                  <i data-lucide="droplet" class="icon-crimson"></i>
+                  <span class="stat-title">Total Donor Registration</span>
+                </div>
+                <div class="stat-number" id="stat-donors">95,124</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <i data-lucide="building-2" class="icon-crimson"></i>
+                  <span class="stat-title">Total Blood Centers</span>
+                </div>
+                <div class="stat-number" id="stat-centers">240</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <i data-lucide="calendar-days" class="icon-orange"></i>
+                  <span class="stat-title">Total Upcoming Camps</span>
+                </div>
+                <div class="stat-number" id="stat-camps-upcoming">9</div>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <i data-lucide="tent" class="icon-gray"></i>
+                  <span class="stat-title">Camps Organised</span>
+                </div>
+                <div class="stat-number" id="stat-camps-org">10,044</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AP Map Image -->
+          <div class="flex-center">
+            <img src="andhra_pradesh_districts_colored_4k.png" alt="Andhra Pradesh Districts Map" class="ap-map-img" />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HERO BANNER -->
+    <section class="hero-section">
+      <div class="container text-center max-w-4xl">
+        <h1 class="hero-heading">
+          Every Drop Counts.<br/>
+          <span class="text-gradient">Every Life Matters.</span>
+        </h1>
+        
+        <p class="hero-subheading">
+          The intelligent digital blood bank ecosystem connecting donors, hospitals, and recipients in real-time. Find blood in minutes, not hours.
+        </p>
+        
+        <div class="btn-group justify-center">
+          <a href="#register" class="btn btn-primary btn-lg">Become a Donor</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. HOW DONATION WORKS (3-STEP PROCEDURAL GUIDE) -->
+    <section id="how-it-works" class="section bg-white border-b">
+      <div class="container max-w-6xl">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+          <h2 class="title-crimson text-4xl">How Blood Donation Works</h2>
+          <p class="text-subtle text-lg">
+            A simple, transparent 3-step process to save lives and make an impact.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-icon-wrapper">
+              <i data-lucide="user-check" class="step-icon"></i>
+              <span class="step-number">1</span>
+            </div>
+            <h3 class="step-title">Register as Donor</h3>
+            <p class="step-desc">Sign up and set up your donor profile in under 2 minutes.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-icon-wrapper">
+              <i data-lucide="heart-handshake" class="step-icon"></i>
+              <span class="step-number">2</span>
+            </div>
+            <h3 class="step-title">Get Matched & Donate</h3>
+            <p class="step-desc">Receive instant notifications when your blood type is needed nearby.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-icon-wrapper">
+              <i data-lucide="award" class="step-icon"></i>
+              <span class="step-number">3</span>
+            </div>
+            <h3 class="step-title">Save Lives & Earn Badges</h3>
+            <p class="step-desc">Track your impact, receive thank-you messages from recipients.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container text-center">
+      <div class="footer-logo">❤</div>
+      <h2 class="footer-title">BLOOD4LIFE</h2>
+      <p class="footer-desc">Building the world's most trusted, responsive, and connected blood donation ecosystem.</p>
+      <div class="footer-copy">
+        © <span id="current-year">2026</span> BLOOD4LIFE. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Logic JS -->
+  <script src="app.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
